@@ -3,10 +3,7 @@ package com.example.wbdv20su1averywpxserverjava.controllers;
 import com.example.wbdv20su1averywpxserverjava.models.Club;
 import com.example.wbdv20su1averywpxserverjava.services.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,24 @@ public class ClubController {
         return service.findAllClubs();
     }
 
+    @PostMapping("/api/clubs")
+    public Club createStandaloneClub(
+            @RequestBody Club newClub) {
+        return service.createClub(newClub);
+    }
+
+    @DeleteMapping("/api/clubs/{clubId}")
+    public List<Club> deleteClub(
+            @PathVariable("clubId") Integer cid) {
+        return service.deleteClub(cid);
+    }
+
+    @PutMapping("/api/clubs/{cid}")
+    public Club updateClub(
+            @PathVariable("cid") Integer clubId,
+            @RequestBody Club updatedClub) {
+        return service.updateClub(clubId, updatedClub);
+    }
 //    @GetMapping("/api/Clubs/{ClubId}")
 //    public Club findClubById(
 //            @PathVariable("ClubId") Integer tid) {

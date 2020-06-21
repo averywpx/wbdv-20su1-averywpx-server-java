@@ -33,6 +33,19 @@ public class EventController {
         return service.findEventsForClub(tid);
     }
 
+    @PostMapping("/api/clubs/{clubId}/events")
+    public Event createEvent(
+            @PathVariable("clubId") Integer clubId,
+            @RequestBody Event newEvent) {
+        return service.createEvent(clubId, newEvent);
+    }
+
+    @DeleteMapping("/api/events/{eventId}")
+    public List<Event> deleteEvent(
+            @PathVariable("eventId") Integer eid) {
+        return service.deleteEvent(eid);
+    }
+
 //
 //    @PutMapping("/api/Events/{wid}")
 //    public Event updateEvent(
@@ -47,12 +60,7 @@ public class EventController {
 //        return EventService.createEvent(1, newEvent);
 //    }
 //
-//    @PostMapping("/api/Clubs/{tid}/Events")
-//    public Event createEvent(
-//            @PathVariable("tid") Integer ClubId,
-//            @RequestBody Event newEvent) {
-//        return EventService.createEvent(ClubId, newEvent);
-//    }
+
 
 
 
@@ -62,11 +70,7 @@ public class EventController {
 //        return EventService.findEventById(wid);
 //    }
 //
-//    @DeleteMapping("/api/Events/{EventId}")
-//    public List<Event> deleteEvent(
-//            @PathVariable("EventId") Integer wid) {
-//        return EventService.deleteEvent(wid);
-//    }
+
 
 
 }

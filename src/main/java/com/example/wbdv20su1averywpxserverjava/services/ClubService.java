@@ -19,4 +19,22 @@ public class ClubService {
         return repository.findAllClubs();
     }
 
+    public Club createClub(Club newClub) {
+        return repository.save(newClub);
+    }
+
+    public List<Club> deleteClub(Integer cid) {
+        repository.deleteById(cid);
+        List<Club> result = new ArrayList<Club>();
+        return result;
+    }
+
+    public Club updateClub(Integer clubId, Club updatedClub) {
+        Club club = repository.findClubById(clubId);
+        club.setName(updatedClub.getName());
+        club.setCategory(updatedClub.getCategory());
+        repository.save(club);
+        return club;
+    }
+
 }

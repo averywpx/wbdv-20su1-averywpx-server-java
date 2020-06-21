@@ -11,6 +11,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String time;
     private String location;
     private String content;
@@ -24,8 +25,18 @@ public class Event {
     public Event() {
     }
 
-    public Event(Integer id, String time, String location, String content, Club club) {
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Event(Integer id, String name, String time, String location, String content, Club club) {
         this.id = id;
+        this.name = name;
         this.time = time;
         this.location = location;
         this.content = content;
