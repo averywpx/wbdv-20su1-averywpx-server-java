@@ -42,7 +42,17 @@ public class EventService {
         List<Event> result = new ArrayList<Event>();
         return result;
     }
-    
+
+    public Event updateEvent(Integer eventId, Event updatedEvent) {
+        Event event = repository.findEventById(eventId);
+        event.setName(updatedEvent.getName());
+        event.setTime(updatedEvent.getTime());
+        event.setLocation(updatedEvent.getLocation());
+        event.setContent(updatedEvent.getContent());
+        repository.save(event);
+        return event;
+    }
+
 //    public Event findEventById(Integer wid) {
 //        for (Event e: Events) {
 //            if(e.getId().equals(wid)) {
@@ -52,15 +62,5 @@ public class EventService {
 //        return null;
 //    }
 
-
-
-
-
-//    public Event updateEvent(Integer EventId, Event updatedEvent) {
-//        Event Event = repository.findEventById(EventId);
-//        Event.setType(updatedEvent.getType());
-//        repository.save(Event);
-//        return Event;
-//    }
 
 }

@@ -20,6 +20,7 @@ public class ClubService {
     }
 
     public Club createClub(Club newClub) {
+
         return repository.save(newClub);
     }
 

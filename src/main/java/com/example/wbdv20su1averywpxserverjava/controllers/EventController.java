@@ -46,13 +46,13 @@ public class EventController {
         return service.deleteEvent(eid);
     }
 
-//
-//    @PutMapping("/api/Events/{wid}")
-//    public Event updateEvent(
-//            @PathVariable("wid") Integer EventId,
-//            @RequestBody Event updatedEvent) {
-//        return EventService.updateEvent(EventId, updatedEvent);
-//    }
+
+    @PutMapping("/api/events/{eid}")
+    public Event updateEvent(
+            @PathVariable("eid") Integer eventId,
+            @RequestBody Event updatedEvent) {
+        return service.updateEvent(eventId, updatedEvent);
+    }
 //
 //    @PostMapping("/api/Events")
 //    public Event createStandaloneEvent(

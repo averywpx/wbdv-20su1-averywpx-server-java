@@ -1,5 +1,7 @@
 package com.example.wbdv20su1averywpxserverjava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,10 +13,37 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String Category;
+    private String category;
+    //president's username
+    private String president;
 
     @OneToMany(mappedBy = "club")
     private List<Event> eventList;
+
+    @ManyToMany(mappedBy="enrolledSections")
+    @JsonIgnore
+    private List<User> enrolledUsers;
+
+
+
+
+    public void setEventList(List<Event> eventList) {
+        this.eventList = eventList;
+    }
+
+    public List<Event> getEventList() {
+        return eventList;
+    }
+
+
+    public Club(Integer id, String name, String category, List<Event> eventList) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.eventList = eventList;
+    }
+
+
 
     public Club() {
     }
@@ -22,7 +51,7 @@ public class Club {
     public Club(Integer id, String name, String category) {
         this.id = id;
         this.name = name;
-        Category = category;
+        this.category = category;
     }
 
     public void setId(Integer id) {
@@ -34,7 +63,7 @@ public class Club {
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     public Integer getId() {
@@ -46,6 +75,6 @@ public class Club {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 }

@@ -12,9 +12,6 @@ import java.util.List;
 public class ClubController {
     @Autowired
     ClubService service;
-    public void createClub() {}
-    public void deleteClub() {}
-    public void updateClub() {}
 
     @GetMapping("/api/clubs")
     public List<Club> findAllClubs() {
