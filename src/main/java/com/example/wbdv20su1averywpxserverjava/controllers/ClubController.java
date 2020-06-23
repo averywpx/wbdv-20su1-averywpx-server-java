@@ -1,6 +1,7 @@
 package com.example.wbdv20su1averywpxserverjava.controllers;
 
 import com.example.wbdv20su1averywpxserverjava.models.Club;
+import com.example.wbdv20su1averywpxserverjava.models.Event;
 import com.example.wbdv20su1averywpxserverjava.services.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,12 @@ public class ClubController {
         return service.findAllClubs();
     }
 
+    @GetMapping("/api/clubs/{clubId}")
+    public Club findClubById(
+            @PathVariable("clubId") Integer cid) {
+        return service.findClubById(cid);
+    }
+    
     @PostMapping("/api/clubs")
     public Club createStandaloneClub(
             @RequestBody Club newClub) {

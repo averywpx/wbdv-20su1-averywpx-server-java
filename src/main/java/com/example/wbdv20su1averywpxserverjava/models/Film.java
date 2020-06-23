@@ -13,6 +13,22 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String imdb;
+
+    public Film(Integer id, String name, String imdb, User user) {
+        this.id = id;
+        this.name = name;
+        this.imdb = imdb;
+        this.user = user;
+    }
+
+    public String getImdb() {
+        return imdb;
+    }
+
+    public void setImdb(String imdb) {
+        this.imdb = imdb;
+    }
 
     @ManyToOne
     @JsonIgnore

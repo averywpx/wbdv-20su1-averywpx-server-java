@@ -19,14 +19,6 @@ public class User {
     private String email;
     private String gender;
 
-    public List<Film> getMovieList() {
-        return movieList;
-    }
-
-    public void setMovieList(List<Film> movieList) {
-        this.movieList = movieList;
-    }
-
     public User(Integer id, String username, String password, String phone, String email, String gender, List<Film> movieList, List<Club> clubs) {
         this.id = id;
         this.username = username;
@@ -47,6 +39,14 @@ public class User {
             joinColumns=@JoinColumn(name="USER_ID", referencedColumnName="ID"),
             inverseJoinColumns=@JoinColumn(name="CLUB_ID", referencedColumnName="ID"))
     private List<Club> clubs;
+
+    public List<Film> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(List<Film> movieList) {
+        this.movieList = movieList;
+    }
 
     public User(Integer id, String username, String password, String phone, String email, String gender, List<Club> clubs) {
         this.id = id;
