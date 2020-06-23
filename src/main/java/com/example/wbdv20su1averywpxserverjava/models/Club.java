@@ -13,6 +13,7 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
     private String category;
     //president's username
     private String president;
@@ -20,12 +21,32 @@ public class Club {
     @OneToMany(mappedBy = "club")
     private List<Event> eventList;
 
-    @ManyToMany(mappedBy="enrolledSections")
+    @ManyToMany(mappedBy = "clubs")
     @JsonIgnore
-    private List<User> enrolledUsers;
+    private List<User> users;
 
 
 
+    public Club() {
+    }
+
+
+    public Club(Integer id, String name, String category, String president, List<Event> eventList, List<User> users) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.president = president;
+        this.eventList = eventList;
+        this.users = users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
 
     public void setEventList(List<Event> eventList) {
         this.eventList = eventList;
@@ -33,25 +54,6 @@ public class Club {
 
     public List<Event> getEventList() {
         return eventList;
-    }
-
-
-    public Club(Integer id, String name, String category, List<Event> eventList) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.eventList = eventList;
-    }
-
-
-
-    public Club() {
-    }
-
-    public Club(Integer id, String name, String category) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
     }
 
     public void setId(Integer id) {
@@ -76,5 +78,13 @@ public class Club {
 
     public String getCategory() {
         return category;
+    }
+
+    public void setPresident(String president) {
+        this.president = president;
+    }
+
+    public String getPresident() {
+        return president;
     }
 }
